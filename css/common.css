@@ -1,0 +1,7 @@
+@import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+:root {
+    --font-gothic: "Nanum Gothic", sans-serif;
+    --font-round: 'NanumSquareRound',sans-serif;
+}
