@@ -1,0 +1,6 @@
+@import url('./common.css');
+
+body {
+    font-family: var(--font-gothic);
+    
+}
