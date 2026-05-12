@@ -56,3 +56,17 @@ function updateButton() {
     // 1개 이상 키워드 선택 시 활성화
     btnNext.disabled = selectedSet.size === 0; 
 }
+
+// 다음 버튼 클릭 
+btnNext.addEventListener('click', () => {
+    if (selectedSet.size === 0) return; 
+
+    const selectedKeywords = Array.from(selectedSet);
+    console.log('선택된 키워드: ', selectedKeywords);
+
+    // 다음 화면으로 이동
+    window.location.href = '../html/chat.html';
+});
+
+// 초기 렌더링 
+renderChips();
