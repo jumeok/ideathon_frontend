@@ -24,6 +24,6 @@ function checkAllSelected() {
 
 nextButton.addEventListener("click", () => {
   if (!nextButton.disabled) {
-    window.location.href = "../interests.html";
+    window.location.href = "../html/interests.html";
   }
 });

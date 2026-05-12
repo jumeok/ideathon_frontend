@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/interests.css" />
+    <title>관심사 선택</title>
+</head>
+<body>
+    <div class="screen">
+        <!-- 상단 영역 -->
+        <header>
+            <button class="btn-back">
+                <img src="../images/back.svg" alt="뒤로가기" />
+            </button>
+            <div class="progress-bar">
+                <img src="../images/step2.svg" alt="progress-step2-img" />
+            </div>
+        </header>
+    
+        <!-- 타이틀 -->
+        <section class="title-section">
+            <h1 class="title">내 관심사를<br>골라보세요</h1>
+            <p class="subtitle">딱 맞는 상대를 매칭해드립니다</p>
+        </section>
+
+<section class="interest-grid">
+
+        <button class="interest-button">
+            <div class="icon"><img src="../images/cat_exercise.svg" alt="exercise"></div>
+            <span>운동</span>
+        </button>
+
+        <button class="interest-button">
+            <div class="icon"><img src="../images/cat_reading.svg" alt="reading"></div>
+            <span>독서</span>
+        </button>
+
+        <button class="interest-button">
+            <div class="icon"><img src="../images/cat_music.svg" alt="music"></div>
+            <span>음악</span>
+        </button>
+
+        <button class="interest-button">
+            <div class="icon"><img src="../images/cat_investment.svg" alt="investment"></div>
+            <span>주식</span>
+        </button>
+
+        <button class="interest-button">
+            <div class="icon"><img src="../images/cat_ott.svg" alt="ott"></div>
+            <span>OTT</span>
+        </button>
+
+        <button class="interest-button">
+            <div class="icon"><img src="../images/cat_food.svg" alt="food"></div>
+            <span>맛집</span>
+        </button>
+
+        <button class="interest-button">
+            <div class="icon"><img src="../images/cat_fashion.svg" alt="fashion"></div>
+            <span>패션</span>
+        </button>
+
+        <button class="interest-button etc-button">
+            <div class="icon"><img src="../images/cat_etc.svg" alt="etc"></div>
+            <span>기타</span>
+        </button>
+    </section>
+        <div class="bottom-sheet hidden" id="etcSheet">
+        <div class="sheet-handle"></div>
+
+        <div class="custom-keywords" id="customKeywords"></div>
+
+        <div class="keyword-input-wrap">
+            <input 
+            type="text" 
+            id="keywordInput" 
+            placeholder="기타 키워드를 추가해보세요."
+            />
+            <button type="button" id="addKeywordBtn">+</button>
+        </div>
+</div>
+        <button class="btn-next" disabled>
+            <img src="../images/next.svg" alt="다음" />
+        </button>
+    </div>
+
+    <script src="../js/interests.js"></script>
+</body>
+</html>
