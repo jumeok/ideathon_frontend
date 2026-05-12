@@ -1,6 +1,193 @@
-@import url('./common.css');
+* {
+  box-sizing: border-box;
+}
 
 body {
-    font-family: var(--font-gothic);
-    
+  margin: 0;
+  background: #fff;
+  font-family: "Nanum Gothic", "나눔고딕", sans-serif;
+  color: #000;
 }
+
+.mobile {
+  width: 393px;
+  min-height: 852px;
+  margin: 0 auto;
+  background: #fff;
+  overflow: hidden;
+}
+
+.status-bar {
+  height: 64px;
+  padding: 29px 34px 0 34px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.battery {
+  width: 28px;
+  height: 14px;
+  border: 2px solid #000;
+  border-radius: 4px;
+  position: relative;
+  display: inline-block;
+}
+
+.battery::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: #000;
+  border-radius: 2px;
+}
+
+.battery::after {
+  content: "";
+  position: absolute;
+  right: -5px;
+  top: 3px;
+  width: 3px;
+  height: 6px;
+  background: #000;
+  border-radius: 0 2px 2px 0;
+}
+
+main {
+  padding: 0 24px 60px 24px;
+}
+
+.back-btn {
+  margin-top: 48px;
+  width: 28px;
+  height: 34px;
+  border: none;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0;
+}
+
+.back-btn::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 4px;
+  width: 20px;
+  height: 20px;
+  border-left: 4px solid #000;
+  border-bottom: 4px solid #000;
+  transform: rotate(45deg);
+  border-radius: 2px;
+}
+
+.progress {
+  margin-top: 63px;
+  width: 100%;
+  height: 5px;
+  background: #d6dbe0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  width: 25%;
+  height: 100%;
+  background: #000;
+  border-radius: 999px;
+}
+
+.title-section {
+  margin-top: 76px;
+}
+
+.title-section h1 {
+  margin: 0;
+  font-size: 41px;
+  line-height: 1.18;
+  font-weight: 900;
+  letter-spacing: -2.4px;
+}
+
+.title-section p {
+  margin: 24px 0 0 0;
+  color: #6B7684;
+  font-size: 23px;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -1.2px;
+}
+
+.question {
+  margin-top: 130px;
+}
+
+.question + .question {
+  margin-top: 86px;
+}
+
+.question h2 {
+  margin: 0 0 48px 0;
+  font-size: 30px;
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  white-space: nowrap;
+}
+
+.question button {
+  width: 100%;
+  height: 72px;
+  margin-bottom: 20px;
+  border: 2px solid #D2D7DD;
+  border-radius: 999px;
+  background: #fff;
+  color: #000;
+  font-family: "Nanum Gothic", "나눔고딕", sans-serif;
+  font-size: 27px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -1.5px;
+  cursor: pointer;
+}
+
+.question button.selected {
+  background: #E3ECFF;
+  border-color: #3468DE;
+  color: #1C4AB3;
+}
+
+.next-button {
+  width: 100%;
+  height: 100px;
+  margin-top: 86px;
+  border: none;
+  border-radius: 32px;
+  background: #3468DE;
+  color: #fff;
+  font-family: "Nanum Gothic", "나눔고딕", sans-serif;
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  cursor: pointer;
+}
+
+.next-button:disabled {
+  background: #fff;
+  color: #6B7684;
+  cursor: not-allowed;
+  border: 2px solid #D2D7DD;
+  font-weight: 600;
+}
+
