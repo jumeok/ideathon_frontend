@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
-    <title>성향 테스트</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/personality.css" />
+    <title>성향 테스트</title>
 </head>
 <body>
-<div class="container">
-    <main>
-        <div class="progress">
-        <div class="progress-fill"></div>
-        </div>
-
+    <div class="screen">
+        <!-- 상단 영역 -->
+        <header>
+            <div class="progress-bar">
+                <img src="../images/step1.svg" alt="progress-step1-img" />
+            </div>
+        </header>
+    
+        <!-- 타이틀 -->
         <section class="title-section">
-        <h1>내 성향에 가까운<br />선택지를 골라보세요</h1>
-        <p>딱 맞는 상대를 매칭해드립니다</p>
+            <h1 class="title">내 성향에 가까운<br>선택지를 골라보세요</h1>
+            <p class="subtitle">딱 맞는 상대를 매칭해드립니다</p>
         </section>
 
+        <!-- 질문 영역 -->
       <section class="question">
         <h2>Q1. 여럿이 있는 자리에서 나는 보통?</h2>
         <button>먼저 말 걸고 분위기를 여는 편이다</button>
@@ -71,8 +71,8 @@
       </section>
 
       <button id="nextButton" class="next-button" disabled>다음으로</button>
-    </main>
+    </div>
 
-  <script src="../js/personality.js"></script>
+    <script src="../js/personality.js"></script>
 </body>
 </html>

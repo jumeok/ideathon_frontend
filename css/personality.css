@@ -1,145 +1,67 @@
-* {
-  box-sizing: border-box;
-}
+@import url('./common.css');
 
 body {
-  margin: 0;
-  background: #fff;
-  font-family: "Nanum Gothic", "나눔고딕", sans-serif;
-  color: #000;
+    font-family: var(--font-gothic);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    padding: 20px 0;
 }
 
-.mobile {
-  width: 393px;
-  min-height: 852px;
-  margin: 0 auto;
-  background: #fff;
-  overflow: hidden;
+header {
+    margin-bottom: 2.19rem;
 }
 
-.status-bar {
-  height: 64px;
-  padding: 29px 34px 0 34px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  font-size: 17px;
-  font-weight: 800;
+.screen {
+    overflow-y: auto;
+    width: 24.5625rem;
+    height: 53.25rem;
+    position: relative;
+    background: #FFFFFF;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+    padding: 4rem 1.5rem 1.88rem 1.5rem;
+    scrollbar-width: none;    
 }
 
-.icons {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 13px;
-  font-weight: 800;
+.screen::-webkit-scrollbar {
+    display: none;
 }
 
-.battery {
-  width: 28px;
-  height: 14px;
-  border: 2px solid #000;
-  border-radius: 4px;
-  position: relative;
-  display: inline-block;
+.progress-bar img {
+    width: 100%;
+    display: block;
 }
 
-.battery::before {
-  content: "";
-  position: absolute;
-  inset: 2px;
-  background: #000;
-  border-radius: 2px;
+.title {
+    color: #000;
+    font-size: 1.75rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 2.25rem; /* 128.571% */
+    margin-bottom: 0.75rem;
 }
 
-.battery::after {
-  content: "";
-  position: absolute;
-  right: -5px;
-  top: 3px;
-  width: 3px;
-  height: 6px;
-  background: #000;
-  border-radius: 0 2px 2px 0;
-}
-
-main {
-  padding: 0 24px 60px 24px;
-}
-
-.back-btn {
-  margin-top: 48px;
-  width: 28px;
-  height: 34px;
-  border: none;
-  background: transparent;
-  position: relative;
-  cursor: pointer;
-  padding: 0;
-  font-size: 0;
-}
-
-.back-btn::before {
-  content: "";
-  position: absolute;
-  left: 3px;
-  top: 4px;
-  width: 20px;
-  height: 20px;
-  border-left: 4px solid #000;
-  border-bottom: 4px solid #000;
-  transform: rotate(45deg);
-  border-radius: 2px;
-}
-
-.progress {
-  margin-top: 63px;
-  width: 100%;
-  height: 5px;
-  background: #d6dbe0;
-  border-radius: 999px;
-  overflow: hidden;
-}
-
-.progress-fill {
-  width: 25%;
-  height: 100%;
-  background: #000;
-  border-radius: 999px;
-}
-
-.title-section {
-  margin-top: 76px;
-}
-
-.title-section h1 {
-  margin: 0;
-  font-size: 41px;
-  line-height: 1.18;
-  font-weight: 900;
-  letter-spacing: -2.4px;
-}
-
-.title-section p {
-  margin: 24px 0 0 0;
-  color: #6B7684;
-  font-size: 23px;
-  line-height: 1.25;
-  font-weight: 600;
-  letter-spacing: -1.2px;
+.subtitle {
+    color: var(--bw-600, #6B7684);
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 4.06rem;
 }
 
 .question {
-  margin-top: 130px;
+  margin-top: 21px;
 }
 
 .question + .question {
-  margin-top: 86px;
+  margin-top: 40px;
 }
 
 .question h2 {
-  margin: 0 0 48px 0;
-  font-size: 30px;
+  margin: 0 0 20px 0;
+  font-size: 16px;
   line-height: 1.25;
   font-weight: 800;
   letter-spacing: -1.5px;
@@ -148,14 +70,14 @@ main {
 
 .question button {
   width: 100%;
-  height: 72px;
+  height: 36px;
   margin-bottom: 20px;
   border: 2px solid #D2D7DD;
   border-radius: 999px;
   background: #fff;
   color: #000;
   font-family: "Nanum Gothic", "나눔고딕", sans-serif;
-  font-size: 27px;
+  font-size: 14px;
   line-height: 1;
   font-weight: 600;
   letter-spacing: -1.5px;
@@ -168,16 +90,17 @@ main {
   color: #1C4AB3;
 }
 
+
 .next-button {
   width: 100%;
-  height: 100px;
-  margin-top: 86px;
+  height: 72px;
+  margin-top: 40px;
   border: none;
-  border-radius: 32px;
+  border-radius: 16px;
   background: #3468DE;
   color: #fff;
   font-family: "Nanum Gothic", "나눔고딕", sans-serif;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 900;
   letter-spacing: -1.5px;
   cursor: pointer;
@@ -190,4 +113,3 @@ main {
   border: 2px solid #D2D7DD;
   font-weight: 600;
 }
-
