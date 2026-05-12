@@ -1,0 +1,111 @@
+@import url('./common.css');
+
+body {
+    font-family: var(--font-gothic);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    padding: 20px 0;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+}
+
+.screen {
+    overflow-y: auto;
+    width: 24.5625rem;
+    height: 53.25rem;
+    position: relative;
+    background: #FFFFFF;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+    padding: 4rem 1.5rem 1.88rem 1.5rem;
+    scrollbar-width: none;    
+}
+
+.screen::-webkit-scrollbar {
+    display: none;
+}
+
+
+header {
+    margin-bottom: 2.19rem;
+}
+
+.btn-back {
+    margin-bottom: 2rem;
+}
+
+.btn-back img {
+    width: 0.6875rem;
+    height: 1.1875rem;
+    display: block;
+}
+
+.progress-bar img {
+    width: 100%;
+    display: block;
+}
+
+.title {
+    color: #000;
+    font-size: 1.75rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 2.25rem; /* 128.571% */
+    margin-bottom: 0.75rem;
+}
+
+.subtitle {
+    color: var(--bw-600, #6B7684);
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 4.06rem;
+}
+
+.keyword-grid {
+    display: flex;
+    flex-wrap: wrap; /* 넘치면 다음 줄로 */
+    row-gap: 0.91rem;
+    column-gap: 0.29rem;
+}
+
+.chip {
+    display: flex;
+    height: 2.22713rem;
+    padding: 0.85656rem 1.14213rem 0.91369rem 1.14213rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.57106rem;
+    border-radius: 1.39906rem;
+    border: 0.914px solid #D2D7DD;
+}
+
+.chip.selected {
+    border-radius: 1.39906rem;
+    border: 0.914px solid var(--Blue-600, #3468DE);
+}
+
+.chip span {
+    color: var(--bw-600, #6B7684);
+    text-align: center;
+    font-size: 0.91369rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+
+.btn-next {
+    display: block;
+    margin-top: 4.29rem;
+    margin-bottom: 1.88rem;
+    margin-left: auto; 
+}
