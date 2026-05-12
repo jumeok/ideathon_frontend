@@ -38,3 +38,21 @@ function renderChips() {
         keywordGrid.appendChild(chip); 
     });
 }
+
+// 키워드 선택 및 해제 토글 함수
+function toggleKeyword(keyword) {
+    if (selectedSet.has(keyword)) { // 키워드 해제하는 경우 
+        selectedSet.delete(keyword);
+    } else { // 키워드 선택하는 경우
+        selectedSet.add(keyword);
+    }
+
+    updateButton();
+    renderChips(); // 칩 변경 사항 렌더링
+}
+
+// 다음 버튼 활성 및 비활성 
+function updateButton() {
+    // 1개 이상 키워드 선택 시 활성화
+    btnNext.disabled = selectedSet.size === 0; 
+}
