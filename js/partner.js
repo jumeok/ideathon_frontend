@@ -30,7 +30,7 @@ function renderChips() {
         chip.className = 'chip' + (selectedSet.has(keyword) ? ' selected' : '');
         chip.innerHTML = `
         <img class="chip-icon" src="../images/${selectedSet.has(keyword) ? 'check.svg' : 'plus.svg'}" alt="" />
-        <span>${keyword}</span>
+        <span> ${keyword}</span>
         `;
         // 키워드 칩 이벤트 리스너 
         chip.addEventListener('click', () => toggleKeyword(keyword));
