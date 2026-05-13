@@ -1,0 +1,202 @@
+@import url('./common.css');
+
+body {
+    font-family: var(--font-gothic);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    padding: 20px 0;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+}
+
+header {
+    margin-bottom: 2.19rem;
+}
+
+.btn-back {
+    margin-bottom: 2rem;
+}
+
+.btn-back img {
+    width: 0.6875rem;
+    height: 1.1875rem;
+    display: block;
+}
+
+.screen {
+    overflow-y: auto;
+    width: 24.5625rem;
+    height: 53.25rem;
+    position: relative;
+    background: #FFFFFF;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+    padding: 4rem 1.5rem 1.88rem 1.5rem;
+    scrollbar-width: none;    
+}
+
+.screen::-webkit-scrollbar {
+    display: none;
+}
+
+.progress-bar img {
+    width: 100%;
+    display: block;
+}
+
+.title {
+    color: #000;
+    font-size: 1.75rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 2.25rem; /* 128.571% */
+    margin-bottom: 0.75rem;
+}
+
+.subtitle {
+    color: var(--bw-600, #6B7684);
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 4.06rem;
+}
+
+.interest-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.interest-button {
+    height: 260px;
+    border: 2px solid #D2D7DD;
+    border-radius: 32px;
+    background: #fff;
+    color: #6B7684;
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    transition: all 0.2s ease;
+}
+
+.interest-button .icon {
+    font-size: 82px;
+    margin-bottom: 32px;
+}
+
+.interest-button span {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -2px;
+}
+
+.interest-button.selected {
+    background: #E3ECFF;
+    border-color: #3468DE;
+    color: #1C4AB3;
+}
+
+.btn-next {
+    display: block;
+    margin-top: 4.29rem;
+    margin-bottom: 1.88rem;
+    margin-left: auto; 
+}
+
+.bottom-sheet {
+  position: fixed;
+  bottom: 0;
+  left:50%;
+  transform: translateX(-50%);
+  width: 24.5625rem;
+  height: 420px;
+  background: #fff;
+  border-radius: 28px 28px 0 0;
+  padding: 20px 20px 0px 20px;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.12);
+  z-index: 100;
+}
+
+.bottom-sheet.hidden {
+  display: none;
+}
+
+.sheet-handle {
+  width: 64px;
+  height: 5px;
+  background: #d9d9d9;
+  border-radius: 999px;
+  margin: 0 auto 36px;
+}
+
+.custom-keywords {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 12px;
+  row-gap: 10px;
+  min-height: 300px;
+
+  align-content: flex-start;
+}
+
+.keyword-chip {
+  padding: 10px 18px;
+  border: 1.5px solid #d1d7df;
+  border-radius: 9999px;
+  background: #fff;
+  color: #6f7a89;
+  font-size: 16px;
+  font-weight: 600;
+  height: 40px;
+}
+
+.keyword-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 58px;
+  padding: 0 10px 0 22px;
+  background: #f0f2f4;
+  border-radius: 999px;
+  width: 24rem;
+  left: 50%;
+  transform: translateX(-50%);
+  position: fixed;;
+}
+
+.keyword-input-wrap input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  color: #333;
+}
+
+.keyword-input-wrap input::placeholder {
+  color: #9a9a9a;
+}
+
+#addKeywordBtn {
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: #3f6be5;
+  color: white;
+  font-size: 32px;
+  line-height: 1;
+  align-items: center;
+}
