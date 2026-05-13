@@ -28,17 +28,20 @@
         <div class="chat-container" id="chatContainer"></div>
         
         <!-- 입력 영역 -->
-        <div class="input-row">
-            <input
-                type="text"
-                id="chatInput"
-                placeholder="대화를 시작해보세요"
-                autocomplete="off"
-                maxlength="200"
-            />
-            <button class="btn-send" id="sendBtn" disabled>
-                <img src="../images/send.svg" alt="보내기"/>
-            </button>
+        <div class="input-area">
+            <p class="error-notice" id="errorNotice"></p>
+            <div class="input-row">
+                <input
+                    type="text"
+                    id="chatInput"
+                    placeholder="대화를 시작해보세요"
+                    autocomplete="off"
+                    maxlength="200"
+                />
+                <button class="btn-send" id="sendBtn" disabled>
+                    <img src="../images/send.svg" alt="보내기"/>
+                </button>
+            </div>
         </div>
     </div>
 
