@@ -4,33 +4,37 @@ let retryCount = 0;
 const MAX_RETRY = 20;
 const RETRY_INTERVAL = 5000;
 
-// 대화 히스토리 (POST /chat에 통째로 전달)
 let messages = [];
 let isLoading = false;
 
-// DOM 참조
 const chatContainer = document.getElementById('chatContainer');
 const chatInput = document.getElementById('chatInput');
 const sendBtn = document.getElementById('sendBtn');
 const titleSection = document.getElementById('titleSection');
 const errorNotice = document.getElementById('errorNotice');
 
-/* ── 이벤트 리스너 ── */
+const btnBack = document.querySelector(".btn-back");
+
+btnBack.addEventListener("click", () => {
+  window.location.href = "../html/partner.html";
+});
+
+console.log('chat.js 최신 파일 연결됨');
+
 chatInput.addEventListener('input', () => {
-    // 입력창이 비어있거나 로딩 중일 때는 보내기 버튼 비활성화
     sendBtn.disabled = chatInput.value.trim() === '' || isLoading;
 });
 
-// 입력창 입력 후 키보드 엔터 클릭 시 메세지 보내기
 chatInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && !sendBtn.disabled) sendMessage();
+    if (e.key === 'Enter' && !sendBtn.disabled) {
+        sendMessage();
+    }
 });
 
 sendBtn.addEventListener('click', sendMessage);
 
-/* ── 유틸 ── */
 function escapeHtml(str) {
-    return str
+    return String(str)
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
@@ -43,21 +47,18 @@ function setLoading(val) {
     sendBtn.disabled = val || chatInput.value.trim() === '';
 }
 
-
 function scrollToBottom() {
     chatContainer.scrollTop = chatContainer.scrollHeight;
 }
 
 function showError(msg) {
     errorNotice.textContent = msg;
-    // setTimeout(() => { errorNotice.textContent = ''; }, 4000);
 }
 
 function clearError() {
     errorNotice.textContent = '';
 }
 
-/* ── UI 렌더링 ── */
 function appendAIMessage(text) {
     const div = document.createElement('div');
     div.className = 'message-ai';
@@ -72,12 +73,16 @@ function appendAIMessage(text) {
 function appendUserMessage(text) {
     const div = document.createElement('div');
     div.className = 'message-user';
-    div.innerHTML = `<div class="user-bubble">${escapeHtml(text)}</div>`;
+    div.innerHTML = `
+        <div class="user-bubble">${escapeHtml(text)}</div>
+    `;
     chatContainer.appendChild(div);
     scrollToBottom();
 }
 
 function showTyping() {
+    hideTyping();
+
     const div = document.createElement('div');
     div.className = 'typing-indicator';
     div.id = 'typingIndicator';
@@ -93,61 +98,82 @@ function showTyping() {
 
 function hideTyping() {
     const el = document.getElementById('typingIndicator');
-    if (el) el.remove();
+    if (el) {
+        el.remove();
+    }
 }
 
 function hideTitleSection() {
-    titleSection.classList.add('hidden');
+    if (titleSection) {
+        titleSection.classList.add('hidden');
+    }
 }
 
-/* ── API 호출 ── */
-
-// 1) 채팅 시작 - AI 첫 인사 받아오기
 async function startChat() {
     setLoading(true);
     showTyping();
 
     try {
-        const res = await fetch(`${API_BASE}/chat/start`, { method: 'POST' });
-        if (!res.ok) throw new Error(`서버 오류 (${res.status})`);
+        const res = await fetch(`${API_BASE}/chat/start`, {
+            method: 'POST'
+        });
+
+        if (!res.ok) {
+            throw new Error(`서버 오류 (${res.status})`);
+        }
 
         const data = await res.json();
+        console.log('startChat 응답:', data);
 
         const aiText = data.reply;
 
-        clearError();
+        if (!aiText) {
+            throw new Error('AI 응답이 비어있습니다.');
+        }
 
+        retryCount = 0;
+        clearError();
         hideTyping();
         hideTitleSection();
 
-        messages.push({ role: 'model', content: aiText });
+        messages.push({
+            role: 'model',
+            content: aiText
+        });
+
         appendAIMessage(aiText);
+        setLoading(false);
 
     } catch (e) {
+        console.error('startChat 오류:', e);
         hideTyping();
+
         if (retryCount < MAX_RETRY) {
             retryCount++;
+            showError(`서버 연결 중이에요... (${retryCount}/${MAX_RETRY})`);
 
-            errorNotice.textContent = `서버 연결 중이에요... (${retryCount}/${MAX_RETRY})`;
             setTimeout(startChat, RETRY_INTERVAL);
-            // showError(`서버 연결 중이에요. 잠시 후 다시 시도할게요. (${retryCount}/${MAX_RETRY})`);
-            // setTimeout(startChat, 5000);
-        } else {
-            showError('서버에 연결할 수 없어요. 잠시 후 새로고침 해주세요.');
+            return;
         }
-    } finally {
+
+        showError('서버에 연결할 수 없어요. 잠시 후 새로고침 해주세요.');
         setLoading(false);
     }
 }
 
-// 2) 사용자 메시지 전송
 async function sendMessage() {
     const text = chatInput.value.trim();
-    if (!text || isLoading) return;
 
-    // 화면에 먼저 표시
+    if (!text || isLoading) {
+        return;
+    }
+
     appendUserMessage(text);
-    messages.push({ role: 'user', content: text });
+
+    messages.push({
+        role: 'user',
+        content: text
+    });
 
     chatInput.value = '';
     sendBtn.disabled = true;
@@ -158,20 +184,37 @@ async function sendMessage() {
     try {
         const res = await fetch(`${API_BASE}/chat`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ messages }),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ messages })
         });
-        if (!res.ok) throw new Error(`서버 오류 (${res.status})`);
+
+        if (!res.ok) {
+            throw new Error(`서버 오류 (${res.status})`);
+        }
 
         const data = await res.json();
+        console.log('sendMessage 응답:', data);
 
         const aiText = data.reply;
 
+        if (!aiText) {
+            throw new Error('AI 응답이 비어있습니다.');
+        }
+
+        clearError();
         hideTyping();
-        messages.push({ role: 'model', content: aiText });
+
+        messages.push({
+            role: 'model',
+            content: aiText
+        });
+
         appendAIMessage(aiText);
 
     } catch (e) {
+        console.error('sendMessage 오류:', e);
         hideTyping();
         showError('메시지 전송에 실패했어요. 다시 시도해주세요.');
     } finally {
@@ -179,5 +222,4 @@ async function sendMessage() {
     }
 }
 
-/* ── 진입점 ── */
 startChat();
