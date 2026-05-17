@@ -39,6 +39,10 @@ input {
     padding: 4rem 1.5rem 10rem 1.5rem;
 
     scrollbar-width: none;
+
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0; /* padding-bottom 제거 */
 }
 
 .screen::-webkit-scrollbar {
@@ -81,20 +85,17 @@ header {
 
 /* ───────────────── 입력창 ───────────────── */
 
+.chat-container {
+    flex: 1; /* 남은 공간 다 차지 */
+}
+
 .input-area {
-    position: fixed;
-
-    left: 50%;
-    transform: translateX(-50%);
-
-    bottom: calc(20px + 0.75rem);
-
-    width: calc(24.5625rem - 2.5rem);
-
+    position: sticky;
+    bottom: 0;
+    width: 100%;
     z-index: 100;
-
     background: #FFFFFF;
-    padding-top: 0.5rem;
+    padding: 0.5rem 0 0.75rem 0;
 }
 
 .error-notice {
