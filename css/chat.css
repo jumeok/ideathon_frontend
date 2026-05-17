@@ -5,8 +5,9 @@ body {
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: flex-start; 
+    align-items: flex-start;
     padding: 20px 0;
+    background: #f5f5f5;
 }
 
 button {
@@ -24,20 +25,27 @@ input {
     padding: 0;
 }
 
+/* ───────────────── 화면 ───────────────── */
+
 .screen {
-    overflow-y: hidden;
+    overflow-y: auto;
     width: 24.5625rem;
     height: 53.25rem;
     position: relative;
     background: #FFFFFF;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
-    padding: 4rem 1.5rem 0 1.5rem;
-    scrollbar-width: none;    
+
+    /* 아래 여백 중요 */
+    padding: 4rem 1.5rem 10rem 1.5rem;
+
+    scrollbar-width: none;
 }
 
 .screen::-webkit-scrollbar {
     display: none;
 }
+
+/* ───────────────── 헤더 ───────────────── */
 
 header {
     margin-bottom: 2.19rem;
@@ -61,59 +69,66 @@ header {
 .title {
     color: #000;
     font-size: 1.75rem;
-    font-style: normal;
     font-weight: 700;
-    line-height: 2.25rem; /* 128.571% */
+    line-height: 2.25rem;
 }
 
 .subtitle {
     color: var(--bw-600, #6B7684);
     font-size: 1rem;
-    font-style: normal;
     font-weight: 600;
-    line-height: normal;
 }
 
+/* ───────────────── 입력창 ───────────────── */
+
 .input-area {
-    position: absolute;
-    left: 1.25rem;
-    right: 1.25rem;
-    bottom: 0.75rem;
+    position: fixed;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    bottom: calc(20px + 0.75rem);
+
+    width: calc(24.5625rem - 2.5rem);
+
+    z-index: 100;
+
+    background: #FFFFFF;
+    padding-top: 0.5rem;
 }
 
 .error-notice {
     font-size: 12px;
     color: #e05a5a;
-    min-height: 18px;
-    margin-bottom: 6px;
     text-align: center;
+    display: none;
 }
 
 .input-row {
     height: 3.625rem;
     border-radius: 1.8125rem;
     background: #EFF1F3;
+
     display: flex;
     align-items: center;
 }
 
 #chatInput {
     flex: 1;
+
     outline: none;
+
     color: #000;
     font-size: 1rem;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
+
     padding: 1.31rem 0 1.19rem 1.75rem;
 }
 
 #chatInput::placeholder {
     color: #979797;
     font-size: 1rem;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
 }
 
 .btn-send {
@@ -128,88 +143,122 @@ header {
     display: block;
 }
 
-/* AI 대화 */
+/* ───────────────── AI 메시지 ───────────────── */
 
-/* AI 메세지 */
 .message-ai {
     display: flex;
     align-items: flex-end;
     gap: 0.5rem;
+
+    margin-bottom: 1rem;
 }
 
 .ai-avatar {
     width: 1.88463rem;
     height: 1.88469rem;
     flex-shrink: 0;
-    align-self: flex-end;    
 }
 
 .ai-bubble {
     max-width: 11.52681rem;
+
     padding: 1rem 1.37rem 1rem 1.4rem;
-    stroke-width: 1px;
+
     border: 1px solid #ADC6FF;
     border-radius: 1rem 1rem 1rem 0.37106rem;
+
     background: #FFF;
+
     color: #000;
+
     font-family: var(--font-round);
     font-size: 0.86588rem;
-    font-style: normal;
     font-weight: 400;
-    line-height: 1.23694rem; /* 142.857% */
-    word-break: keep-all; 
+    line-height: 1.23694rem;
+
+    word-break: keep-all;
+    overflow-wrap: break-word;
 }
 
-/* ── 사용자 메시지 ── */
+/* ───────────────── 사용자 메시지 ───────────────── */
+
 .message-user {
     display: flex;
     justify-content: flex-end;
+
+    margin-bottom: 1rem;
 }
 
 .user-bubble {
     max-width: 13rem;
+
     padding: 0.75rem 1.25rem;
+
     border-radius: 1rem 1rem 0.37106rem 1rem;
+
     background: #1A1A1A;
     color: #FFF;
+
     font-family: var(--font-round);
     font-size: 0.86588rem;
-    font-style: normal;
     font-weight: 400;
     line-height: 1.23694rem;
+
     word-break: keep-all;
+    overflow-wrap: break-word;
 }
 
-/* ── 타이핑 인디케이터 ── */
+/* ───────────────── 타이핑 인디케이터 ───────────────── */
+
 .typing-indicator {
     display: flex;
     align-items: flex-end;
     gap: 0.5rem;
+
+    margin-bottom: 1rem;
 }
 
 .typing-dots {
     display: flex;
     align-items: center;
     gap: 0.3rem;
+
     padding: 0.75rem 1rem;
+
     border: 1px solid #ADC6FF;
     border-radius: 1rem 1rem 1rem 0.37106rem;
+
     background: #FFF;
 }
 
 .typing-dots span {
     width: 0.4rem;
     height: 0.4rem;
+
     border-radius: 50%;
     background: #ADC6FF;
+
     animation: typing-bounce 1.2s infinite ease-in-out;
 }
 
-.typing-dots span:nth-child(1) { animation-delay: 0s; }
-.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
-.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+.typing-dots span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.typing-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
 
 @keyframes typing-bounce {
-    0%, 60%, 100% { transform: translateY(0); }
-    30%            { transform: translateY(-0.35rem); }
+    0%, 60%, 100% {
+        transform: translateY(0);
+    }
+
+    30% {
+        transform: translateY(-0.35rem);
+    }
 }

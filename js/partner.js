@@ -11,7 +11,7 @@ const KEYWORDS = [
     '직관적인', '유머러스한', '진지한',
     '성실한', '게으른', '완벽주의적인',
     '자유로운', '리더형', '협력적인',
-    '활발한', '지적인', '책임감 있는',
+    '활발한', '지적인',
 ];
 
 // 선택 키워드 set
@@ -20,6 +20,12 @@ const selectedSet = new Set();
 // DOM 요소 선택
 const keywordGrid = document.getElementById('keywordGrid');
 const btnNext = document.querySelector('.btn-next');
+
+const btnBack = document.querySelector(".btn-back");
+
+btnBack.addEventListener("click", () => {
+  window.location.href = "../html/interests.html";
+});
 
 // 키워드 칩 렌더링
 function renderChips() {

@@ -136,5 +136,5 @@ btnNext.addEventListener("click", () => {
 const btnBack = document.querySelector(".btn-back");
 
 btnBack.addEventListener("click", () => {
-  window.location.href = "../html/personality.html";
+  window.location.href = "../html/partner.html";
 });
